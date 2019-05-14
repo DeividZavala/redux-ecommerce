@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    <div classNameName="App">
+    <div className="App">
       <nav className="uk-navbar-container" uk-navbar="true">
         <div className="uk-navbar-left">
 
