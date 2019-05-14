@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import NewProductForm from './NewProductForm';
 import {connect} from 'react-redux';
 import ProductCard from '../common/ProductCard';
+import {onCreateProduct} from '../../redux/ducks/products';
 
 class NewProductContiner extends Component{
 
     submit = values => {
         console.log(values)
+        this.props.onCreateProduct(values)
     };
 
     render(){
@@ -23,4 +25,4 @@ class NewProductContiner extends Component{
 
 const mapStateToProps = (state) => state.form;
 
-export default connect(mapStateToProps, {})(NewProductContiner);
+export default connect(mapStateToProps, {onCreateProduct})(NewProductContiner);
