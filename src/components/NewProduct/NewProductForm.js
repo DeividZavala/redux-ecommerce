@@ -1,14 +1,16 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import {customInput, customTextarea} from '../common/fields/customFields';
 
 const NewProductForm = ({ handleSubmit }) => (
-    <form onSubmit={handleSubmit}>
+    <form className="uk-form-stacked uk-text-left" onSubmit={handleSubmit}>
         <div>
             <label >Nombre del producto</label>
             <Field
                 name="name"
                 component="input"
                 type="text"
+                label="Nombre del producto"
             />
         </div>
         <div>
@@ -19,7 +21,7 @@ const NewProductForm = ({ handleSubmit }) => (
                 type="number"
             />
         </div>
-        <button type="submit">Picale mijo</button>
+        <button className="uk-button uk-button-primary uk-margin-auto uk-display-block" type="submit">Picale mijo</button>
     </form>
 )
 
