@@ -21,9 +21,9 @@ function App() {
                 <li className="uk-active"><a href="#">Iniciar sesión</a></li>
                 <li>
                     <a href="#">David Zavala</a>
-                    <div class="uk-navbar-dropdown">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"><a href="#">Perfil</a></li>
+                    <div className="uk-navbar-dropdown">
+                        <ul className="uk-nav uk-navbar-dropdown-nav">
+                            <li className="uk-active"><a href="#">Perfil</a></li>
                             <li><a href="#">Nuevo producto</a></li>
                             <li><a href="#">Cerrar sesión</a></li>
                         </ul>
