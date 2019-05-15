@@ -1,5 +1,3 @@
-import { dispatch } from "rxjs/internal/observable/pairs";
-
 const CREATE = 'ecommerce/products/CREATE';
 
 

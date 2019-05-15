@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import {customInput, customTextarea} from '../common/fields/customFields';
 
 const NewProductForm = ({ handleSubmit }) => (
     <form className="uk-form-stacked uk-text-left" onSubmit={handleSubmit}>
