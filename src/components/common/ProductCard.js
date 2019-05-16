@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductCard = ({name, price, description}) => (
+const ProductCard = ({name, price, desc}) => (
     <div>
         <div className="uk-card uk-card-default uk-text-left">
             <div className="uk-card-media-top">
@@ -26,7 +26,7 @@ const ProductCard = ({name, price, description}) => (
             <div className="uk-card-body">
                 <h3 className="uk-card-title">{name ? name : "No disponible"}</h3>
                 <h5 className="uk-margin-remove-top">Precio: {price ? `$${price}.00` : "No disponible"}</h5>
-                <p>{description ? description : "No disponible"}</p>
+                <p>{desc ? desc : "No disponible"}</p>
             </div>
         </div>
     </div>
