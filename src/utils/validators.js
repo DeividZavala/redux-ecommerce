@@ -8,5 +8,7 @@ export const minPrice = value => Number(value) > 5 ? undefined : "El precio mini
 
 export const minImages = value => value && value.split(",").length < 1 ? "Agrega minimo una imagen" : undefined;
 
+export const passwordMatch = (value, allvalues) => value === allvalues.password ? undefined : "Las contraseñas con coinciden";
+
 // Nomalized
 export const maxCharacters = value => value.substr(0, 16);
