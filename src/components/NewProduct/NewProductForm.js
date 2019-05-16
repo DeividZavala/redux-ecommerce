@@ -33,6 +33,7 @@ const NewProductForm = ({ handleSubmit }) => (
             name="images"
             component={customTextarea}
             label="Imagenes del producto:"
+            validate={[minImages]}
         />
         
         <button className="uk-button uk-button-primary uk-margin-auto uk-display-block" type="submit">Picale mijo</button>
