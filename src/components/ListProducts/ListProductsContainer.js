@@ -9,7 +9,7 @@ class ListProductsContainer extends PureComponent{
         return(
             <div className="uk-section">
                 <div className="uk-container">
-                    <div className="uk-grid-match uk-child-width-1-4" uk-grid="true">
+                    <div className="uk-grid-match uk-grid-small uk-child-width-1-4" uk-grid="true">
                         {
                             products.length > 0 &&
                             products.map((product, index) => <ProductCard {...product} key={index} />)
