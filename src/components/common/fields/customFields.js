@@ -1,11 +1,16 @@
 import React from 'react';
 
-export const customInput = props => (
+export const customInput = ({label, type, meta, ...props}) => (
     <div className="uk-margin">
-      <label className="uk-form-label">{props.label}</label>
+      <label className="uk-form-label">{label}</label>
       <div className="uk-form-controls">
-        <input className="uk-input" {...props.input} type={props.type} />
+        <input className={`uk-input ${(meta.error && meta.touched) ? 'uk-form-danger' : '' }`} {...props.input} type={type} />
       </div>
+      {(meta.error && meta.touched)&& (
+        <div className="uk-alert-danger" uk-alert="true">
+            <p>{meta.error}</p>
+        </div>
+      )}
     </div>
 );
 

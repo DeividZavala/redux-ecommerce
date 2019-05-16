@@ -1,21 +1,29 @@
 import React from 'react';
 
-const ProductCard = ({name, price, desc}) => (
-    <div>
+const ProductCard = ({name, price, desc, images = []}) => {
+    images = typeof images === 'string' ? images.split(',') : images;
+    return (
+        <div>
         <div className="uk-card uk-card-default uk-text-left">
             <div className="uk-card-media-top">
                 <div className="uk-position-relative uk-visible-toggle uk-light" tabIndex="-1" uk-slideshow="true">
 
                     <ul className="uk-slideshow-items">
-                        <li>
-                            <img src="images/photo.jpg" alt="" uk-cover="true" />
-                        </li>
-                        <li>
-                            <img src="images/dark.jpg" alt="" uk-cover="true" />
-                        </li>
-                        <li>
-                            <img src="images/light.jpg" alt="" uk-cover="true" />
-                        </li>
+                        {images.length ? 
+                        
+                            images.map((url, index) => (
+                                <li key={index}>
+                                    <img src={url} alt="" uk-cover="true" />
+                                </li>
+                            ))
+
+                            :
+
+                            <li>
+                                <img src="http://karinlifoods.com/wp-content/uploads/2017/09/imagen-no-disponible.jpg" alt="" uk-cover="true" />
+                            </li>
+                            
+                        }
                     </ul>
 
                     <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous="true" uk-slideshow-item="previous"> </a>
@@ -30,6 +38,7 @@ const ProductCard = ({name, price, desc}) => (
             </div>
         </div>
     </div>
-)
+    )
+}
 
 export default ProductCard;

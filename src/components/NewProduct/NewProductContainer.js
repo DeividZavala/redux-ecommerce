@@ -7,12 +7,15 @@ import {onCreateProduct} from '../../redux/ducks/products';
 class NewProductContiner extends Component{
 
     submit = values => {
-        this.props.onCreateProduct(values)
+        let {images, ...product} = values;
+        images = images.split(",");
+        this.props.onCreateProduct({...product, images})
     };
 
     render(){
         const { newProduct = {values: {name:"", price: ""}} } = this.props;
         const { values } = newProduct;
+        console.log(values);
         return (
             <div className="uk-section">
                 <div className="uk-container">
