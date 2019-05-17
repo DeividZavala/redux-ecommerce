@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductCard = ({name, price, desc, images = []}) => {
+const ProductCard = ({name, price, desc, images = [], setItem, ...props}) => {
     images = typeof images === 'string' ? images.split(',') : images;
     return (
         <div>
@@ -35,6 +35,9 @@ const ProductCard = ({name, price, desc, images = []}) => {
                 <h3 className="uk-card-title">{name ? name : "No disponible"}</h3>
                 <h5 className="uk-margin-remove-top">Precio: {price ? `$${price}.00` : "No disponible"}</h5>
                 <p>{desc ? desc : "No disponible"}</p>
+            </div>
+            <div className="uk-card-footer">
+                <a href="#" className="uk-button uk-button-text" onClick={() => setItem({name, price, desc, images, ...props})}>Editar</a>
             </div>
         </div>
     </div>

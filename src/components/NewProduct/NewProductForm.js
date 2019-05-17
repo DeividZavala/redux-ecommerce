@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import {customInput, customTextarea} from '../common/fields/customFields';
+import {connect} from 'react-redux';
 import {isRequired, minLng, maxLng, maxCharacters, minPrice, minImages} from '../../utils/validators';
 
 const NewProductForm = ({ handleSubmit }) => (
@@ -40,6 +41,18 @@ const NewProductForm = ({ handleSubmit }) => (
     </form>
 )
 
-export default reduxForm({
+let withForm = reduxForm({
     form: "newProduct"
 })(NewProductForm)
+
+export default connect(
+    state => {
+        console.log(state);
+        let {images, ...product} = state.products.product
+        console.log(images);
+        images = images && images instanceof Array ? images.join(',') : images;
+        return {
+            initialValues: {...product, images} // pull initial values from products reducer
+        }
+    }
+  )(withForm)
