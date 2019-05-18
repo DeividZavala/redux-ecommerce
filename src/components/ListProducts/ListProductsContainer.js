@@ -5,10 +5,11 @@ import { onFetch } from '../../redux/ducks/products';
 
 class ListProductsContainer extends PureComponent{
 
-    componentDidMount(){}
+    componentDidMount(){
+        this.props.onFetch();
+    }
 
     render(){
-        console.log(this.props);
         const {products = []} = this.props;
         return(
             <div className="uk-section">

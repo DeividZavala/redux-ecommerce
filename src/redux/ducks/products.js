@@ -1,5 +1,6 @@
 import axios from 'axios';
 import UIkit from 'uikit';
+import {normalizedData} from '../../utils/formatingMethods';
 
 const CREATE = 'ecommerce/products/CREATE';
 const FETCH_SUCCESS = 'ecommerce/products/FETCH_SUCCESS';
@@ -13,7 +14,9 @@ const initialState = {
 export default function reducer(state = initialState, action){
     switch (action.type){
         case FETCH_SUCCESS:
-            return state
+            const products = normalizedData(action.payload);
+            return {...state, items: products}
+
         case CREATE:
             let {items} = state;
             items = {...items, [action.payload.id]: action.payload}
@@ -52,6 +55,7 @@ export const onCreateProduct = (product) => (dispatch) => {
 export const onFetch = () => (dispatch) => {
     axios.get("http://localhost:3001/products")
     .then(res => {
-        console.log(res.data);
+        const {data: products} = res;
+        dispatch(fetchSuccessProducts(products))
     })
 }

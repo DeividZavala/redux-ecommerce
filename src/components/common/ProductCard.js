@@ -36,6 +36,9 @@ const ProductCard = ({name, price, desc, images = []}) => {
                 <h5 className="uk-margin-remove-top">Precio: {price ? `$${price}.00` : "No disponible"}</h5>
                 <p>{desc ? desc : "No disponible"}</p>
             </div>
+            <div className="uk-card-footer">
+                <a href="#" className="uk-button uk-button-text">Editar</a>
+            </div>
         </div>
     </div>
     )
