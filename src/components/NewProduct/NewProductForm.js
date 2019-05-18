@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import {customInput, customTextarea} from '../common/fields/customFields';
 import {isRequired, minLng, maxLng, maxCharacters, minPrice, minImages} from '../../utils/validators';
+import {connect} from 'react-redux';
 
 const NewProductForm = ({ handleSubmit }) => (
     <form className="uk-form-stacked uk-text-left" onSubmit={handleSubmit}>
@@ -40,6 +41,17 @@ const NewProductForm = ({ handleSubmit }) => (
     </form>
 )
 
-export default reduxForm({
+const withForm = reduxForm({
     form: "newProduct"
 })(NewProductForm)
+
+export default connect(
+    state => {
+        let {images, ...product} = state.products.product;
+        images = images && images instanceof Array ? images.join(',') : images;
+        return {
+            initialValues: {...product, images}// pull initial values from account reducer
+        }
+    },
+    {}
+  )(withForm)

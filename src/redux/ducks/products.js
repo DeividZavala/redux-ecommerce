@@ -3,16 +3,23 @@ import UIkit from 'uikit';
 import {normalizedData} from '../../utils/formatingMethods';
 
 const CREATE = 'ecommerce/products/CREATE';
+const SET = 'ecommerce/products/SET';
 const FETCH_SUCCESS = 'ecommerce/products/FETCH_SUCCESS';
 
 
 const initialState = {
     total: 0,
+    product: {},
     items: {}
 }
 
 export default function reducer(state = initialState, action){
     switch (action.type){
+
+        case SET:
+            const {payload: product} = action;
+            return {...state, product};
+
         case FETCH_SUCCESS:
             const products = normalizedData(action.payload);
             return {...state, items: products}
@@ -21,6 +28,7 @@ export default function reducer(state = initialState, action){
             let {items} = state;
             items = {...items, [action.payload.id]: action.payload}
             return {...state, items}
+
         default:
             return state;
     }
@@ -29,6 +37,11 @@ export default function reducer(state = initialState, action){
 
 export const createProduct = (payload) => ({
     type: CREATE,
+    payload
+})
+
+export const setProduct = (payload) => ({
+    type: SET,
     payload
 })
 
@@ -49,6 +62,10 @@ export const onCreateProduct = (product) => (dispatch) => {
         dispatch(createProduct(product)) 
     })
     
+}
+
+export const onSetProduct = product => dispatch => {
+    dispatch(setProduct(product));
 }
 
 

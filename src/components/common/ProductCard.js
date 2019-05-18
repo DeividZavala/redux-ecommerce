@@ -1,6 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-const ProductCard = ({name, price, desc, images = []}) => {
+const ProductCard = ({name, price, desc, id, images = [], setProduct, ...props}) => {
     images = typeof images === 'string' ? images.split(',') : images;
     return (
         <div>
@@ -37,7 +38,18 @@ const ProductCard = ({name, price, desc, images = []}) => {
                 <p>{desc ? desc : "No disponible"}</p>
             </div>
             <div className="uk-card-footer">
-                <a href="#" className="uk-button uk-button-text">Editar</a>
+                <Link to={`/edit/${id}`} 
+                className="uk-button uk-button-text" 
+                onClick={
+                    () => setProduct({
+                        name, 
+                        price, 
+                        desc, 
+                        id, 
+                        images, 
+                        ...props
+                        })
+                }>Editar</Link>
             </div>
         </div>
     </div>
