@@ -4,18 +4,15 @@
       "id": "1",
       "name": "Lagrimas Negras",
       "price": 40,
-      "images": [
-        "https://cdn.shopify.com/s/files/1/1176/1532/products/Thumbnail-plp_lagrimas_negras_large.jpg?v=1536770228"
-      ],
-      "description": "Chela lagrimas negras"
+      "images": "https://cdn.shopify.com/s/files/1/1176/1532/products/Thumbnail-plp_lagrimas_negras_large.jpg?v=1536770228",
+      "description": "Chela lagrimas negras",
+      "desc": "esto esta bien pinche bello, vale verga dice el xavi"
     },
     {
-      "desc": "adsasd",
+      "desc": "una mierda mejor que lo que estaba",
       "name": "Leffe Ruby",
       "price": "100",
-      "images": [
-        "https://cdn.shopify.com/s/files/1/1176/1532/products/LEFRU-B-750-1_large_87a3052f-6f69-4174-8ac5-d3c6490daf6e_grande.jpg?v=1546439842"
-      ],
+      "images": "https://cdn.shopify.com/s/files/1/1176/1532/products/LEFRU-B-750-1_large_87a3052f-6f69-4174-8ac5-d3c6490daf6e_grande.jpg?v=1546439842",
       "id": "GhngIA6"
     },
     {

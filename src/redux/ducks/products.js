@@ -3,6 +3,7 @@ import UIkit from 'uikit';
 import {normalizedData} from '../../utils/formatingMethods';
 
 const CREATE = 'ecommerce/products/CREATE';
+const EDIT = 'ecommerce/products/EDIT'
 const SET = 'ecommerce/products/SET';
 const FETCH_SUCCESS = 'ecommerce/products/FETCH_SUCCESS';
 
@@ -29,6 +30,11 @@ export default function reducer(state = initialState, action){
             items = {...items, [action.payload.id]: action.payload}
             return {...state, items}
 
+        case EDIT: 
+            let {items: newItems} = state;
+            newItems = {...newItems, [action.payload.id]: action.payload};
+            return {...state, items: newItems};
+
         default:
             return state;
     }
@@ -37,6 +43,11 @@ export default function reducer(state = initialState, action){
 
 export const createProduct = (payload) => ({
     type: CREATE,
+    payload
+})
+
+export const editProduct = (payload) => ({
+    type: EDIT,
     payload
 })
 
@@ -63,6 +74,21 @@ export const onCreateProduct = (product) => (dispatch) => {
     })
     
 }
+
+
+export const onEditProduct = product => dispatch => {
+    axios.patch(`http://localhost:3001/products/${product.id}`, product)
+    .then(res => {
+        const {data: product} = res;
+        UIkit.notification({
+            message: '<span uk-icon=\'icon: check\'></span> Producto editado', 
+            status: "success", 
+            pos: 'top-right'
+        })
+        dispatch(editProduct(product))
+    })
+}
+
 
 export const onSetProduct = product => dispatch => {
     dispatch(setProduct(product));

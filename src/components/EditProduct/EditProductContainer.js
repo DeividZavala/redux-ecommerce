@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import NewProductForm from '../NewProduct/NewProductForm';
 import {connect} from 'react-redux';
 import ProductCard from '../common/ProductCard';
-// import {} from '../../redux/ducks/products';
+import {onEditProduct} from '../../redux/ducks/products';
 
 class EditProductContiner extends Component{
 
     submit = values => {
-        console.log(values)
+        this.props.onEditProduct(values)
     };
 
     render(){
@@ -33,4 +33,4 @@ class EditProductContiner extends Component{
 
 const mapStateToProps = (state) => state.form;
 
-export default connect(mapStateToProps, {})(EditProductContiner);
+export default connect(mapStateToProps, {onEditProduct})(EditProductContiner);
