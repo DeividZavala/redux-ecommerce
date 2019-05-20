@@ -62,7 +62,7 @@ export const fetchSuccessProducts = (payload) => ({
 })
 
 export const onCreateProduct = (product) => (dispatch) => {
-    axios.post("http://localhost:3001/products", product)
+    axios.post("http://localhost:3004/products", product)
     .then(res => {
         const {data: product} = res;
         UIkit.notification({
@@ -77,7 +77,7 @@ export const onCreateProduct = (product) => (dispatch) => {
 
 
 export const onEditProduct = product => dispatch => {
-    axios.patch(`http://localhost:3001/products/${product.id}`, product)
+    axios.patch(`http://localhost:3004/products/${product.id}`, product)
     .then(res => {
         const {data: product} = res;
         UIkit.notification({
@@ -96,7 +96,7 @@ export const onSetProduct = product => dispatch => {
 
 
 export const onFetch = () => (dispatch) => {
-    axios.get("http://localhost:3001/products")
+    axios.get("http://localhost:3004/products")
     .then(res => {
         const {data: products} = res;
         dispatch(fetchSuccessProducts(products))
