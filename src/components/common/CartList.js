@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import {changeQuantity} from '../../redux/ducks/cart'
 
-const CartList = ({ items, quantity }) => (
+const CartList = ({changeQuantity, items, quantity }) => (
   <div id="cart" uk-offcanvas="overlay: true; mode: push; flip: true;">
     <div class="uk-offcanvas-bar">
       <button class="uk-offcanvas-close" type="button" uk-close="true" />
@@ -26,7 +27,9 @@ const CartList = ({ items, quantity }) => (
 
                 <td>
                   <h4>{item.name}</h4>
-                  <p>{item.price}</p>
+                  <button onClick={()=>changeQuantity("+",index)} >+</button>
+                  <p>{item.quantity} X $ {item.price} MXN</p>
+                  <button onClick={()=>changeQuantity("-", index)} >-</button>
                 </td>
               </tr>
             ))}
@@ -44,4 +47,4 @@ function mstp(state) {
   };
 }
 
-export default connect(mstp)(CartList);
+export default connect(mstp, {changeQuantity})(CartList);
