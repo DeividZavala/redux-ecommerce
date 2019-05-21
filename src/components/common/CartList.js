@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {changeQuantity} from '../../redux/ducks/cart'
 
-const CartList = ({changeQuantity, items, quantity }) => (
+const CartList = ({total, changeQuantity, items, quantity }) => (
   <div id="cart" uk-offcanvas="overlay: true; mode: push; flip: true;">
     <div class="uk-offcanvas-bar">
       <button class="uk-offcanvas-close" type="button" uk-close="true" />
@@ -32,7 +32,10 @@ const CartList = ({changeQuantity, items, quantity }) => (
                   <button onClick={()=>changeQuantity("-", index)} >-</button>
                 </td>
               </tr>
+
             ))}
+
+            <h2>Total: ${total}MXN</h2>
           </tbody>
         </table>
       )}
@@ -43,7 +46,8 @@ const CartList = ({changeQuantity, items, quantity }) => (
 function mstp(state) {
   return {
     items: state.cart.items,
-    quantity: state.cart.quantity
+    quantity: state.cart.quantity,
+    total: state.cart.total
   };
 }
 

@@ -10,6 +10,11 @@ let initialState = {
     quantity: 0,
     total: 0
 }
+if(localStorage.cart){
+    try{
+        initialState = JSON.parse(localStorage.cart)
+    }catch(e){}
+}
 
 export default function reducer(state=initialState, action){
     
@@ -70,6 +75,8 @@ export let addToCart = (product) => (dispatch, getState) => {
     }
     let {total, quantity} = getTotals(items)
     dispatch(addToCartSuccess({items,total,quantity})) 
+    // lo guarda
+    saveToLocal({items,total,quantity})
 }
 
 // utils alv
@@ -77,4 +84,8 @@ function getTotals(items){
     let total = items.reduce((acc,p)=>acc+(p.price *p.quantity) ,0)
     let quantity = items.reduce((acc,p)=>acc+p.quantity,0)
     return {total, quantity}
+}
+
+function saveToLocal(cart){
+    localStorage.cart = JSON.stringify(cart)
 }
