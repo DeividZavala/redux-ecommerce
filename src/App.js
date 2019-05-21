@@ -1,13 +1,15 @@
-import React from 'react';
-import Router from './Router';
-import './App.css';
-import NavBar from './components/common/NavBar';
+import React from "react";
+import Router from "./Router";
+import "./App.css";
+import NavBar from "./components/common/NavBar";
+import CartList from "./components/common/CartList";
 
 function App() {
   return (
     <div className="App">
-      <NavBar/>
-      <Router/>
+      <NavBar />
+      <CartList />
+      <Router />
     </div>
   );
 }
