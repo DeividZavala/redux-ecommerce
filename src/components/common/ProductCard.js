@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const ProductCard = ({name, price, desc, id, images = [], setProduct, ...props}) => {
+const ProductCard = ({addToCart, product, name, price, desc, id, images = [], setProduct, ...props}) => {
     images = typeof images === 'string' ? images.split(',') : images;
     return (
         <div>
@@ -50,6 +50,9 @@ const ProductCard = ({name, price, desc, id, images = [], setProduct, ...props})
                         ...props
                         })
                 }>Editar</Link>
+                <button 
+                onClick={()=>addToCart(product)}
+                className="uk-button uk-button-primary">Agregar</button>
             </div>
         </div>
     </div>

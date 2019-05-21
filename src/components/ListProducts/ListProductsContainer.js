@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import ProductCard from '../common/ProductCard';
 import { onFetch, onSetProduct } from '../../redux/ducks/products';
+import {addToCart} from '../../redux/ducks/cart'
 
 
 class ListProductsContainer extends PureComponent{
@@ -14,6 +15,16 @@ class ListProductsContainer extends PureComponent{
         this.props.onSetProduct(product)
     }
 
+    drawProductCart =  (product, index) => {
+        return <ProductCard 
+                addToCart={this.props.addToCart}
+                setProduct={this.setProduct} 
+                product = {product}
+                {...product} 
+                key={index} 
+                />
+    } 
+
     render(){
         const {products = []} = this.props;
         return(
@@ -22,7 +33,7 @@ class ListProductsContainer extends PureComponent{
                     <div className="uk-grid-match uk-grid-small uk-child-width-1-4" uk-grid="true">
                         {
                             products.length > 0 &&
-                            products.map((product, index) => <ProductCard setProduct={this.setProduct} {...product} key={index} />)
+                            products.map(this.drawProductCart)
                         
                         }
                     </div>
@@ -46,4 +57,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {onFetch, onSetProduct})(ListProductsContainer);
+export default connect(mapStateToProps, {onFetch, addToCart,onSetProduct})(ListProductsContainer);

@@ -1,4 +1,9 @@
 {
+  "orders":[
+    {
+      "id":"A23431"
+    }
+  ],
   "products": [
     {
       "id": "1",
@@ -11,13 +16,13 @@
     {
       "desc": "una mierda mejor que lo que estaba",
       "name": "Leffe Ruby",
-      "price": "100",
+      "price": 100,
       "images": "https://cdn.shopify.com/s/files/1/1176/1532/products/LEFRU-B-750-1_large_87a3052f-6f69-4174-8ac5-d3c6490daf6e_grande.jpg?v=1546439842",
       "id": "GhngIA6"
     },
     {
       "name": "Rolling rock",
-      "price": "150",
+      "price": 150,
       "desc": "esta bien cara pero lo vale mijo",
       "images": [
         "https://cdn.shopify.com/s/files/1/1176/1532/products/Thumbnail-Single-250x512_Rollingrock_grande.jpg?v=1535395700"
