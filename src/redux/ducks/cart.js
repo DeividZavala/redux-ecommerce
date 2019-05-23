@@ -56,6 +56,7 @@ export let changeQuantity = (operation, index) => (dispatch, getState) => {
     }
     let {total, quantity} = getTotals(items)
     dispatch(updateItemsSuccess({items, total, quantity}))
+    saveToLocal({items,total,quantity})
 }
 
 export let addToCart = (product) => (dispatch, getState) => {
