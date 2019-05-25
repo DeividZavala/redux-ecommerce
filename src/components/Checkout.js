@@ -31,7 +31,7 @@ function Checkout({ doPayment, items, total, quantity, history }) {
 
   function onDoPayment() {
     doPayment(card).then(order => {
-      history.push("/all-products");
+      history.push("/confirmation");
     });
   }
 

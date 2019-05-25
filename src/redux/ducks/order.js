@@ -27,7 +27,8 @@ export let doPayment = card => (dispatch, getState) => {
     .digest("hex");
   let order = { cart, card, paid: true };
   console.log(order);
-  return axios.post("http://localhost:3004/orders", order).then(order => {
+  return axios.post("http://localhost:3004/orders", order).then(res => {
+    const { data: order } = res;
     dispatch(doPaymentSuccess(order));
     return order;
   });
