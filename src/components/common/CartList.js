@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import {changeQuantity} from '../../redux/ducks/cart'
+import { changeQuantity } from "../../redux/ducks/cart";
+import { Link } from "react-router-dom";
 
-const CartList = ({total, changeQuantity, items, quantity }) => (
+const CartList = ({ total, changeQuantity, items, quantity }) => (
   <div id="cart" uk-offcanvas="overlay: true; mode: push; flip: true;">
     <div class="uk-offcanvas-bar">
       <button class="uk-offcanvas-close" type="button" uk-close="true" />
@@ -27,18 +28,26 @@ const CartList = ({total, changeQuantity, items, quantity }) => (
 
                 <td>
                   <h4>{item.name}</h4>
-                  <button onClick={()=>changeQuantity("+",index)} >+</button>
-                  <p>{item.quantity} X $ {item.price} MXN</p>
-                  <button onClick={()=>changeQuantity("-", index)} >-</button>
+                  <button onClick={() => changeQuantity("+", index)}>+</button>
+                  <p>
+                    {item.quantity} X $ {item.price} MXN
+                  </p>
+                  <button onClick={() => changeQuantity("-", index)}>-</button>
                 </td>
               </tr>
-
             ))}
 
             <h2>Total: ${total}MXN</h2>
           </tbody>
         </table>
       )}
+      <Link
+        uk-toggle="target: #cart"
+        to="/checkout"
+        className="uk-button uk-button-primary"
+      >
+        Pagar
+      </Link>
     </div>
   </div>
 );
@@ -51,4 +60,7 @@ function mstp(state) {
   };
 }
 
-export default connect(mstp, {changeQuantity})(CartList);
+export default connect(
+  mstp,
+  { changeQuantity }
+)(CartList);
